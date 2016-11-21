@@ -1,0 +1,30 @@
+<window title="Users" border="normal"
+        apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('crud.controller.UserViewModel')">
+    <grid model="@load(vm.userListModel)" mold="paging" pageSize="10">
+        <columns style="align:center">
+            <column label="ID" width="70px"/>
+            <column label="Name" hflex="1">
+                <textbox instant="true" width="100px" value="@bind(vm.nameFilter)" onChange="@command('onChangeFilter')"/>
+            </column>
+            <column label="Age" width="70px"/>
+            <column label="Created"/>
+            <column label="Admin"  width="70px"/>
+            <column label="Action"/>
+        </columns>
+        <template name="model">
+            <row>
+                <label value="@load(each.id)" />
+                <textbox instant="true" hflex="1" inplace="true" value="@load(each.name)" onChange="@command('onChangeName',user=each,name=self.value)"/>
+                <intbox instant="true" hflex="1" inplace="true" value="@load(each.age)"
+                        constraint="no negative: age must be positive"
+                        onChange="@command('onChangeAge',user=each,age=self.value)"/>
+                <label value="@load(each.createdDate)" />
+                <checkbox checked="@load(each.admin)" onCheck="@command('onChangeAdmin',user=each,checked=self.checked)"/>
+                <button onClick="@command('deleteUser',user=each)" label="Delete user"/>
+            </row>
+        </template>
+    </grid>
+    <separator/>
+    <button onClick="@command('addUser')" label="Add user"/>
+</window>
