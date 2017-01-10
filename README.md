@@ -1,0 +1,2 @@
+# CRUD
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f187e035a33340a49fddf5daee4b3c1a)](https://www.codacy.com/app/SlavaSim/CRUD?utm_source=github.com&utm_medium=referral&utm_content=SlavaSim/CRUD&utm_campaign=badger)
